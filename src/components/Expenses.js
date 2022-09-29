@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: 18,
-    borderBottomColor: '#E8E8E8',
+    borderBottomColor: colors.graytwo,
     borderBottomWidth: 1,
   },
   listRight: {

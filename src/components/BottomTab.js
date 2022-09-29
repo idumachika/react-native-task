@@ -33,7 +33,7 @@ const BottomTab = () => {
           style={[
             styles.navigator,
             {
-              backgroundColor: nav.active ? colors.primary : '#E8E8E8',
+              backgroundColor: nav.active ? colors.primary : colors.graytwo,
             },
           ]}
           key={nav.id}

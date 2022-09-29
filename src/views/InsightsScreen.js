@@ -1,11 +1,20 @@
+/* eslint-disable react-native/no-inline-styles */
 import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import Svg, {Circle} from 'react-native-svg';
 import BottomTab from '../components/BottomTab';
 import Expenses from '../components/Expenses';
 import {colors} from '../theme/colors';
 import {fonts} from '../theme/fonts';
+
+let size = 100;
+let percentage = 0.65;
+let radius = size - 5;
+let circle_length = 2 * Math.PI * radius;
+let svgProgress = 100 * percentage;
+console.log(circle_length * svgProgress);
 
 const InsightsScreen = () => {
   const navigation = useNavigation();
@@ -22,12 +31,43 @@ const InsightsScreen = () => {
       </View>
       {/* <Text>Insights</Text> */}
 
-      <View style={styles.heading}>
+      {/* progress bar */}
+      <View style={styles.progressContainer}>
+        <Svg
+          style={{
+            alignItems: 'center',
+            transform: [
+              {rotateZ: '90deg'},
+              {rotateX: '0deg'},
+              {rotateY: '180deg'},
+            ],
+          }}>
+          <Circle
+            cx={size}
+            cy={size}
+            r={size - 5}
+            stroke="grey"
+            strokeWidth="2.5"
+            strokeDasharray={circle_length}
+            strokeDashoffset={0}
+          />
+          <Circle
+            cx={size}
+            cy={size}
+            r={size - 5}
+            stroke={colors.primary}
+            strokeWidth="4"
+            strokeDashoffset={circle_length * (svgProgress - percentage)}
+            strokeDasharray={circle_length}
+            strokeLinecap="round"
+          />
+        </Svg>
         <View style={styles.insightsContainer}>
           <Text style={styles.amount}>$32.01</Text>
           <Text style={styles.percent}>70% spent</Text>
         </View>
       </View>
+
       <View style={styles.expensesContainer}>
         <Text style={styles.title}>Expenses</Text>
 
@@ -63,19 +103,16 @@ const styles = StyleSheet.create({
     lineHeight: 19.5,
     color: colors.primary,
   },
-  heading: {
+  progressContainer: {
     justifyContent: 'center',
+    height: size * 2,
+    width: size * 2,
     alignItems: 'center',
+    alignSelf: 'center',
     marginTop: 32,
   },
   insightsContainer: {
-    width: 200,
-    height: 200,
-    borderWidth: 2,
-    borderColor: '#E8E8E8',
-    // backgroundColor: 'red',
-    borderRadius: 200 / 2,
-    justifyContent: 'center',
+    position: 'absolute',
     alignItems: 'center',
   },
   amount: {
@@ -85,7 +122,7 @@ const styles = StyleSheet.create({
     lineHeight: 29,
   },
   percent: {
-    color: '#BDBDBD',
+    color: colors.graythree,
     fontFamily: fonts.regular,
     fontSize: 11,
     lineHeight: 12,

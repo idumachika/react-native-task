@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   tabContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#E8E8E8',
+    backgroundColor: colors.graytwo,
     padding: 3,
     marginHorizontal: 20,
     borderRadius: 100,
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.semibold,
     fontSize: 16,
     lineHeight: 19.5,
-    color: '#BDBDBD',
+    color: colors.graythree,
   },
 });
 export default ProfileScreen;

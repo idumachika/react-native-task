@@ -78,14 +78,14 @@ const styles = StyleSheet.create({
   postImage: {
     width: 50,
     height: 50,
-    backgroundColor: '#E8E8E8',
+    backgroundColor: colors.graytwo,
     borderRadius: 8,
   },
   postText: {
     marginLeft: 16,
     paddingBottom: 15,
     borderBottomWidth: 1,
-    borderBottomColor: '#E8E8E8',
+    borderBottomColor: colors.graytwo,
   },
   postHeader: {
     flexDirection: 'row',
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     color: colors.black,
   },
   postTime: {
-    color: '#BDBDBD',
+    color: colors.graythree,
     fontFamily: fonts.regular,
     fontSize: 14,
     lineHeight: 17,
